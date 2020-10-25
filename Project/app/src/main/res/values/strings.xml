@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Math Reinforcement Tool</string>
+    <string name="SettingsTitle">Settings</string>
+    <string name="DarkSwitch">Dark Mode</string>
+    <string name="LightSwitch">Light Mode</string>
+    <string name="FontText">Font Size:</string>
+    <string name="SmallButton">Small</string>
+    <string name="MedButton">Med</string>
+    <string name="LargeButton">Large</string>
 </resources>
