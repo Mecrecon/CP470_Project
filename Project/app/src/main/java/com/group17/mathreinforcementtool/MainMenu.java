@@ -13,10 +13,12 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
     }
+    //swap to settings activity
     public void onClickSettings(View view){
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
+    //swap to multiple choice (questions)
     public void onClickMultipleChoice(View view){
         Intent intent = new Intent(this, multipleChoice.class);
         startActivity(intent);
