@@ -21,6 +21,7 @@ public class multipleChoice extends AppCompatActivity {
     int type = 0;
     float number1 = 0f;
     float number2 = 0f;
+    float numAnswer = 0f;
     TextView questionTextView = null;
     RadioButton answerRadioButton1 = null;
     RadioButton answerRadioButton2 = null;
@@ -46,7 +47,6 @@ public class multipleChoice extends AppCompatActivity {
         answerRadioButton2 = findViewById(R.id.answerRadioButton2);
         answerRadioButton3 = findViewById(R.id.answerRadioButton3);
         answerRadioButton4 = findViewById(R.id.answerRadioButton4);
-
         generateQuestion();
     }
 
@@ -55,28 +55,79 @@ public class multipleChoice extends AppCompatActivity {
 
         //generate numbers
         Random rand = new Random();
+        int max = 9;
+        int min = 1;
+
         //easy difficulty
         if(difficulty == 0){
             //addition or subtraction
             if(type == 0 || type == 1) {
-                int max = 9;
-                int min = 1;
-                number1 = rand.nextInt((max-min) + min);
-                number2 = rand.nextInt((max-min) + min);
+                number1 = (float) rand.nextInt((max-min) + min);
+                number2 = (float) rand.nextInt((max-min) + min);
             }
             //multiplication or division
-            if(type == 2 || type == 3) {
-                float max = 9f;
-                float min = 1f;
-                number1 = min + rand.nextFloat() * (max-min);
-                number2 = min + rand.nextFloat() * (max-min);
+            else if(type == 2 || type == 3) {
+                number1 = (float) (min + rand.nextInt() * (max-min));
+                number2 = (float) (min + rand.nextInt() * (max-min));
             }
         }
-        Log.i(this.getLocalClassName(), "Before setting text");
-        //create question string and put in textview
-        questionTextView.setText(R.string.questionText);
-        Log.i(this.getLocalClassName(), "Before setting text");
 
+        //create question string and put in textview
+        if(type == 0) {
+            //set text for question
+            questionTextView.setText(getString(R.string.questionText) + Float.toString(number1) + " + " + Float.toString(number2) + " equal?");
+
+            //answer to question
+            numAnswer = number1 + number2;
+        }
+        //set the answer to one of the radio buttons and fill the remaining 3 with random values
+        int answerSpot = rand.nextInt((3 - 0) + 0);
+        Log.i(this.getLocalClassName(), "AnswerSpot = " + Integer.toString(answerSpot));
+            switch (answerSpot) {
+                case 0:
+                    answerRadioButton1.setText(Float.toString(numAnswer));
+                    break;
+                case 1:
+                    answerRadioButton2.setText(Float.toString(numAnswer));
+                    break;
+                case 2:
+                    answerRadioButton3.setText(Float.toString(numAnswer));
+                    break;
+                case 3:
+                    answerRadioButton4.setText(Float.toString(numAnswer));
+                    break;
+            }
+            for(int i =0; i < 4; i++){
+                //button 1
+                if(i == 0) {
+                    if (answerRadioButton1.getText() == "") {
+                        answerRadioButton1.setText(Float.toString(rand.nextInt((max - min) + min)));
+                        Log.i(this.getLocalClassName(), "Button 1 was empty");
+                    }
+                }
+                //button 2
+                if(i == 1) {
+                    if (answerRadioButton2.getText() == "") {
+                        answerRadioButton2.setText(Float.toString(rand.nextInt((max - min) + min)));
+                        Log.i(this.getLocalClassName(), "Button 2 was empty");
+                    }
+                }
+                //button 3
+                if(i == 2) {
+                    if (answerRadioButton3.getText() == "") {
+                        answerRadioButton3.setText(Float.toString(rand.nextInt((max - min) + min)));
+                        Log.i(this.getLocalClassName(), "Button 3 was empty");
+                    }
+                }
+                //button 4
+                if(i == 3) {
+                    if (answerRadioButton4.getText() == "") {
+                        answerRadioButton4.setText(Float.toString(rand.nextInt((max - min) + min)));
+                        Log.i(this.getLocalClassName(), "Button 4 was empty");
+                    }
+                }
+
+        }
         return;
     }
 }
