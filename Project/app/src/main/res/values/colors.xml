@@ -3,4 +3,15 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <!--Colours for LevelSelect-->
+    <color name="colorLightUnattempted">#8f8d86</color>
+    <color name="colorLightLocked">#33322f</color>
+    <color name="colorLightCorrect">#30a31f</color>
+    <color name="colorLightIncorrect">#ab1d1f</color>
+    <color name="colorDarkUnattempted">#6b6964</color>
+    <color name="colorDarkLocked">#33322f</color>
+    <color name="colorDarkCorrect">#217814</color>
+    <color name="colorDarkIncorrect">#781416</color>
+
 </resources>
