@@ -52,7 +52,7 @@ public class multipleChoice extends AppCompatActivity {
 
     //generate 2 numbers based on the difficulty and put into activity
     public void generateQuestion(){
-        Log.i(this.getLocalClassName(), "Started generateQuestion");
+
         //generate numbers
         Random rand = new Random();
         //easy difficulty
@@ -72,8 +72,10 @@ public class multipleChoice extends AppCompatActivity {
                 number2 = min + rand.nextFloat() * (max-min);
             }
         }
+        Log.i(this.getLocalClassName(), "Before setting text");
         //create question string and put in textview
         questionTextView.setText(R.string.questionText);
+        Log.i(this.getLocalClassName(), "Before setting text");
 
         return;
     }
