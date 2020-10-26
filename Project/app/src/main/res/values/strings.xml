@@ -9,4 +9,5 @@
     <string name="LargeButton">Large</string>
     <string name="settingsButtonText">Settings</string>
     <string name="multipleChoiceButtonText">Multiple Choice</string>
+    <string name="questionText">What is\: </string>
 </resources>
