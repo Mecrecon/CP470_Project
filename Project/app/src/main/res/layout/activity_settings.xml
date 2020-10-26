@@ -29,7 +29,7 @@
         />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/FontLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/FontText"
@@ -43,31 +43,74 @@
         android:id="@+id/SmallButton"
         android:layout_width="wrap_content"
         android:layout_height="40sp"
+        android:layout_below="@id/DarkSwitch"
+
+        android:layout_toEndOf="@id/FontLabel"
         android:text="@string/SmallButton"
         android:textSize="25sp"
-        android:layout_toEndOf="@id/textView"
-        android:layout_below="@id/DarkSwitch"
-        />
+        android:gravity="bottom"/>
 
     <RadioButton
         android:id="@+id/MedButton"
         android:layout_width="wrap_content"
         android:layout_height="40sp"
+        android:layout_below="@id/DarkSwitch"
+
+        android:layout_toEndOf="@id/SmallButton"
         android:text="@string/MedButton"
         android:textSize="25sp"
-        android:layout_toEndOf="@id/SmallButton"
-        android:layout_below="@id/DarkSwitch"
-        />
+        android:gravity="bottom"/>
 
     <RadioButton
         android:id="@+id/LargeButton"
         android:layout_width="match_parent"
         android:layout_height="40sp"
+        android:layout_below="@id/DarkSwitch"
+        android:layout_toEndOf="@id/MedButton"
         android:text="@string/LargeButton"
         android:textSize="25sp"
-        android:layout_toEndOf="@id/MedButton"
-        android:layout_below="@id/DarkSwitch"
+        android:gravity="bottom
+"/>
+
+
+    <Button
+        android:id="@+id/AgreementButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/PolicyButton"
+        android:text="@string/AgreementButton" />
+
+    <Button
+        android:id="@+id/PolicyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/PrivacyPolicyButton" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/AgreementButton"
+        android:text="@string/BugButton"
         />
+
+    <TextView
+        android:id="@+id/VolumeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/FontLabel"
+        android:text="@string/VolumeLabel"
+        android:textSize="30sp"
+        />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/FontLabel"
+        android:layout_marginStart="0dp"
+        android:layout_toEndOf="@id/VolumeLabel"
+        android:gravity/>
 
 
 </RelativeLayout>

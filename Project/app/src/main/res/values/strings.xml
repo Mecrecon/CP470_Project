@@ -7,6 +7,10 @@
     <string name="SmallButton">Small</string>
     <string name="MedButton">Med</string>
     <string name="LargeButton">Large</string>
+    <string name="PrivacyPolicyButton">Privacy Policy</string>
+    <string name="AgreementButton">User Agreement</string>
+    <string name="BugButton">Report a Bug</string>
+    <string name="Volumelabel">Volume</string>
     <string name="settingsButtonText">Settings</string>
     <string name="multipleChoiceButtonText">Multiple Choice</string>
     <string name="questionText">What is\: </string>
