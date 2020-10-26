@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">Math Reinforcement Tool</string>
     <string name="settingsTitle">Settings</string>
     <string name="darkSwitch">Dark Mode</string>
     <string name="lightSwitch">Light Mode</string>
@@ -12,4 +13,6 @@
     <string name="volumelabel">Volume</string>
     <string name="questionText">What is\: </string>
     <string name="levelText">Level</string>
+    <string name="settingsButtonText">Settings</string>
+    <string name="multipleChoiceButtonText">Multiple Choice</string>
 </resources>
