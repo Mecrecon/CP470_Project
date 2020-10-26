@@ -1,17 +1,16 @@
 <resources>
     <string name="app_name">Math Reinforcement Tool</string>
-    <string name="settingsTitle">Settings</string>
-    <string name="darkSwitch">Dark Mode</string>
-    <string name="lightSwitch">Light Mode</string>
-    <string name="fontText">Font Size:</string>
-    <string name="smallButton">Small</string>
-    <string name="medButton">Med</string>
-    <string name="largeButton">Large</string>
-    <string name="privacyPolicyButton">Privacy Policy</string>
-    <string name="agreementButton">User Agreement</string>
-    <string name="bugButton">Report a Bug</string>
-    <string name="volumelabel">Volume</string>
+    <string name="SettingsTitle">Settings</string>
+    <string name="DarkSwitch">Dark Mode</string>
+    <string name="LightSwitch">Light Mode</string>
+    <string name="FontText">Font Size:</string>
+    <string name="SmallButton">Small</string>
+    <string name="MedButton">Med</string>
+    <string name="LargeButton">Large</string>
     <string name="settingsButtonText">Settings</string>
     <string name="multipleChoiceButtonText">Multiple Choice</string>
-    <string name="questionText">What is\: </string>
+    <string name="levelSelectButtonText">Level Select</string>
+
+    <!--Strings for LevelSelect-->
+    <string name="levelText">Level</string>
 </resources>
