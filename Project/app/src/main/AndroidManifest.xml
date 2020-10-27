@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MathTemplateActivity" />
         <activity android:name=".multipleChoice" />
-        <activity android:name=".SettingsActivity" />
+        <activity android:name=".SettingsActivity">
+        </activity>
         <activity android:name=".MainMenu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
