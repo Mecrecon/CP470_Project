@@ -12,11 +12,11 @@
     <string name="bugButton">Report a Bug</string>
     <string name="volumelabel">Volume</string>
     <string name="questionText">What is\: </string>
-    <string name="levelText">Level</string>
+    <string name="levelText">Level</string>g
+    <string name="RestartButton">Restart Progress</string>
     <string name="settingsButtonText">Settings</string>
     <string name="multipleChoiceButtonText">Multiple Choice</string>
-    <string name="RestartButton">Restart Progress</string>
-  
+
     <!-- Joeys Strings (If you use, put them ^)-->
     <string name="textAddition">Addition</string>
     <string name="textSubtraction">Subtraction</string>
