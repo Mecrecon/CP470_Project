@@ -1,18 +1,29 @@
 <resources>
     <string name="app_name">Math Reinforcement Tool</string>
-    <string name="SettingsTitle">Settings</string>
-    <string name="DarkSwitch">Dark Mode</string>
-    <string name="LightSwitch">Light Mode</string>
-    <string name="FontText">Font Size:</string>
-    <string name="SmallButton">Small</string>
-    <string name="MedButton">Med</string>
-    <string name="LargeButton">Large</string>
-    <string name="PrivacyPolicyButton">Privacy Policy</string>
-    <string name="AgreementButton">User Agreement</string>
-    <string name="BugButton">Report a Bug</string>
-    <string name="Volumelabel">Volume</string>
+    <string name="settingsTitle">Settings</string>
+    <string name="darkSwitch">Dark Mode</string>
+    <string name="lightSwitch">Light Mode</string>
+    <string name="fontText">Font Size:</string>
+    <string name="smallButton">Small</string>
+    <string name="medButton">Med</string>
+    <string name="largeButton">Large</string>
+    <string name="privacyPolicyButton">Privacy Policy</string>
+    <string name="agreementButton">User Agreement</string>
+    <string name="bugButton">Report a Bug</string>
+    <string name="volumelabel">Volume</string>
+    <string name="questionText">What is\: </string>
+    <string name="levelText">Level</string>
     <string name="settingsButtonText">Settings</string>
     <string name="multipleChoiceButtonText">Multiple Choice</string>
     <string name="questionText">What is\: </string>
     <string name="RestartButton">Restart Progress</string>
+  
+    <!-- Joeys Strings (If you use, put them ^)-->
+    <string name="textAddition">Addition</string>
+    <string name="textSubtraction">Subtraction</string>
+    <string name="textMultiplication">Multiplication</string>
+    <string name="textDivision">Division</string>
+    <string name="DifficultyEasy">Easy</string>
+    <string name="DifficultyMedium">Medium</string>
+    <string name="DifficultyHard">Hard</string>
 </resources>
