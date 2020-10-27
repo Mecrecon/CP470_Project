@@ -15,7 +15,9 @@
     <string name="levelText">Level</string>
     <string name="settingsButtonText">Settings</string>
     <string name="multipleChoiceButtonText">Multiple Choice</string>
-
+    <string name="questionText">What is\: </string>
+    <string name="RestartButton">Restart Progress</string>
+  
     <!-- Joeys Strings (If you use, put them ^)-->
     <string name="textAddition">Addition</string>
     <string name="textSubtraction">Subtraction</string>
@@ -24,5 +26,4 @@
     <string name="DifficultyEasy">Easy</string>
     <string name="DifficultyMedium">Medium</string>
     <string name="DifficultyHard">Hard</string>
-
 </resources>
