@@ -15,7 +15,6 @@
     <string name="levelText">Level</string>
     <string name="settingsButtonText">Settings</string>
     <string name="multipleChoiceButtonText">Multiple Choice</string>
-    <string name="questionText">What is\: </string>
     <string name="RestartButton">Restart Progress</string>
   
     <!-- Joeys Strings (If you use, put them ^)-->

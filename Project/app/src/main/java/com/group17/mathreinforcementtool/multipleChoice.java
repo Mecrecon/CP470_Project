@@ -11,8 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Formatter;
-import java.util.Locale;
 import java.util.Random;
 
 public class multipleChoice extends AppCompatActivity {
@@ -49,6 +47,7 @@ public class multipleChoice extends AppCompatActivity {
         generateQuestion();
     }
     public void onClick(View view){
+        //answer picked (pull from button)
         float answer = 0f;
 
         //answer1
@@ -95,7 +94,7 @@ public class multipleChoice extends AppCompatActivity {
         if(correctCount < 10) {
             generateQuestion();
         }
-        //close activity (save any stats or return anything before finishing)
+        //WIP- close activity (save any stats or return anything before finishing, and indicate to user that they have completed the 10 questions)
         else{
             finish();
         }
@@ -104,71 +103,60 @@ public class multipleChoice extends AppCompatActivity {
 
     //generate 2 numbers based on the difficulty and put into activity
     public void generateQuestion(){
-        //reset button texts
+        //reset text in all button's
         answerRadioButton1.setText("");
         answerRadioButton2.setText("");
         answerRadioButton3.setText("");
         answerRadioButton4.setText("");
 
-        //generate numbers
+        //number generator
         Random rand = new Random();
 
         //easy difficulty
         if(difficulty == 0){
             //addition or subtraction
-            if(type == 0 || type == 1) {
+            if(type < 2 ) {
                 max = 9;
-                min = 1;
-                number1 = (float) rand.nextInt((max-min) + min);
-                number2 = (float) rand.nextInt((max-min) + min);
             }
             //multiplication or division
-            else if(type == 2 || type == 3) {
+            else{
                 max = 4;
-                min = 1;
-                number1 = (float) rand.nextInt((max-min) + min);
-                number2 = (float) rand.nextInt((max-min) + min);
             }
+            min = 1;
         }
         //medium difficulty
         if(difficulty == 1){
             //addition or subtraction
-            if(type == 0 || type == 1) {
+            if(type < 2){
                 max = 99;
                 min = 10;
-                number1 = (float) rand.nextInt((max-min) + min);
-                number2 = (float) rand.nextInt((max-min) + min);
             }
             //multiplication or division
-            else if(type == 2 || type == 3) {
+            else{
                 max = 6;
                 min = 1;
-                number1 = (float) rand.nextInt((max-min) + min);
-                number2 = (float) rand.nextInt((max-min) + min);
             }
         }
         //hard difficulty
         if(difficulty == 2){
             //addition or subtraction
-            if(type == 0 || type == 1) {
+            if(type < 2){
                 max = 999;
                 min = 100;
-                number1 = (float) rand.nextInt((max-min) + min);
-                number2 = (float) rand.nextInt((max-min) + min);
             }
             //multiplication or division
-            else if(type == 2 || type == 3) {
+            else{
                 max = 8;
                 min = 1;
-                number1 = (float) rand.nextInt((max-min) + min);
-                number2 = (float) rand.nextInt((max-min) + min);
             }
         }
+        //pick 2 random numbers from the range
+        number1 = (float) rand.nextInt((max-min) + min);
+        number2 = (float) rand.nextInt((max-min) + min);
 
         //addition question
         if(type == 0) {
             //set text for question
-
             questionTextView.setText(getString(R.string.questionText) + String.format(" %d + %d equals?", Math.round(number1), Math.round(number2)));
 
             //answer to question
@@ -208,7 +196,6 @@ public class multipleChoice extends AppCompatActivity {
         else{
             stringAnswer = String.format("%.3f", Math.round(numAnswer));
         }
-        //Log.i(this.getLocalClassName(), "AnswerSpot = " + Integer.toString(answerSpot));
             switch (answerSpot) {
                 case 0:
                     answerRadioButton1.setText(stringAnswer);
@@ -223,45 +210,64 @@ public class multipleChoice extends AppCompatActivity {
                     answerRadioButton4.setText(stringAnswer);
                     break;
             }
-            float randomAnswer = 0f;
+            float randomAnswer;
+
             ArrayList<Float> generatedAnswers = new ArrayList<Float>();
+            generatedAnswers.add(numAnswer);
+            int i = 0;
 
-            //for each button update text with a random answer if it doesn't contain the answer
-            for(int i =0; i < 4; i++){
-                String genAnswer = "";
+            //WIP- create random number (answer) for button that isn't the answer or already in a button (not all random)
+            while(i < 4){
+                //string to set button text to
+                String genAnswer;
 
-                //randomize answer for addition/subtraction questions
-                if(type < 2){
-                    randomAnswer = (float) rand.nextInt((max-min) + min);
-
-                    //keep randomizing answer until it doesn't match the actual answer
-                    while (randomAnswer == numAnswer || generatedAnswers.equals(randomAnswer) == true) {
-                        randomAnswer = (float) rand.nextInt((max-min) + min);
-                    }
-                    genAnswer = String.format("%d", Math.round(randomAnswer));
+                //addition
+                if(type == 0) {
+                    randomAnswer = (((float) rand.nextInt((max - min) + min)) + ((float) rand.nextInt((max - min) + min)));
                 }
-                //randomize answer for multiplication questions
-                else if(type == 2){
-                    randomAnswer = (((float) rand.nextInt((max-min) + min)) * ((float) rand.nextInt((max-min) + min)));
-
-                    //keep randomizing answer until it doesn't match the actual answer
-                    while (randomAnswer == numAnswer || generatedAnswers.equals(randomAnswer) == true) {
-                        Log.i("generateAuestion", "Number not in array and not the answer = " + Integer.toString(Math.round(randomAnswer)));
-                        randomAnswer = (((float) rand.nextInt((max-min) + min)) * ((float) rand.nextInt((max-min) + min)));
-                    }
-                    genAnswer = String.format("%d", Math.round(randomAnswer));
+                //subtraction
+                else if (type == 1){
+                    randomAnswer = (((float) rand.nextInt((max - min) + min)) - ((float) rand.nextInt((max - min) + min)));
                 }
-                //randomize answer for division questions
+                //multiplication
+                else if (type == 2){
+                    randomAnswer = (((float) rand.nextInt((max - min) + min)) * ((float) rand.nextInt((max - min) + min)));
+                }
+                //division
                 else{
-                    randomAnswer =(((float) rand.nextInt((max-min) + min)) / ((float) rand.nextInt((max-min) + min)));
+                    randomAnswer = (((float) rand.nextInt((max - min) + min)) / ((float) rand.nextInt((max - min) + min)));
+                }
 
-                        //keep randomizing answer until it doesn't match the actual answer or is one of the current
-                        while (randomAnswer == numAnswer || generatedAnswers.equals(randomAnswer) == true) {
-                            randomAnswer =(((float) rand.nextInt((max-min) + min)) / ((float) rand.nextInt((max-min) + min)));
-                        }
-                    genAnswer = String.format("%.3f", randomAnswer);
+                //keep randomizing answer until it doesn't match the actual answer or is already an answer in a button
+                while (generatedAnswers.equals(randomAnswer)) {
+                    //addition
+                    if(type == 0) {
+                        randomAnswer = (((float) rand.nextInt((max - min) + min)) + ((float) rand.nextInt((max - min) + min)));
                     }
+                    //subtraction
+                    else if (type == 1){
+                        randomAnswer = (((float) rand.nextInt((max - min) + min)) - ((float) rand.nextInt((max - min) + min)));
+                    }
+                    //multiplication
+                    else if (type == 2){
+                        randomAnswer = (((float) rand.nextInt((max - min) + min)) * ((float) rand.nextInt((max - min) + min)));
+                    }
+                    //division
+                    else{
+                        randomAnswer = (((float) rand.nextInt((max - min) + min)) / ((float) rand.nextInt((max - min) + min)));
+                    }
+                }
+                //add number to list
                 generatedAnswers.add(randomAnswer);
+
+                //if the number is whole then print number as integer (no decimal)
+                if(randomAnswer%1 == 0){
+                    genAnswer = String.format("%d", Math.round(randomAnswer));
+                }
+                //number is a decimal so print as decimal number (up to 3 decimal points)
+                else{
+                    genAnswer = String.format("%.3f", Math.round(randomAnswer));
+                }
 
                 //button 1
                 if(i == 0) {
@@ -291,7 +297,7 @@ public class multipleChoice extends AppCompatActivity {
                         //Log.i(this.getLocalClassName(), "Button 4 set number= " + Float.toString(randomAnswer));
                     }
                 }
-
+                i++;
         }
         return;
     }
