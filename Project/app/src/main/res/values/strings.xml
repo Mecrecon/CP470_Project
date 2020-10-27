@@ -18,6 +18,9 @@
 
     <!-- Joeys Strings (If you use, put them ^)-->
     <string name="textAddition">Addition</string>
+    <string name="textSubtraction">Subtraction</string>
+    <string name="textMultiplication">Multiplication</string>
+    <string name="textDivision">Division</string>
     <string name="DifficultyEasy">Easy</string>
     <string name="DifficultyMedium">Medium</string>
     <string name="DifficultyHard">Hard</string>

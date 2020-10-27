@@ -50,6 +50,9 @@ public class MainMenu extends AppCompatActivity {
                   switches to MathTemplateActivity.
                   -!! Although startActivityForResult() is called,
                   onActivityResult() is not yet implemented.
+
+                  -All of these could be one function in the future, however I likely
+                  would need a different representation than just buttons.
     ----------------------------------------------------
     */
     public void onAdditionClick(View v)
@@ -57,7 +60,38 @@ public class MainMenu extends AppCompatActivity {
         Button currentButton = findViewById(v.getId());
         String buttonText = currentButton.getText().toString();
         Intent i = new Intent(this, MathTemplateActivity.class);
-        i.putExtra("AdditionDifficulty", buttonText);
+        i.putExtra("Type", "Addition");
+        i.putExtra("Difficulty", buttonText);
+        startActivityForResult(i, 10);
+    }
+
+    public void onSubtractionClick(View v)
+    {
+        Button currentButton = findViewById(v.getId());
+        String buttonText = currentButton.getText().toString();
+        Intent i = new Intent(this, MathTemplateActivity.class);
+        i.putExtra("Type", "Subtraction");
+        i.putExtra("Difficulty", buttonText);
+        startActivityForResult(i, 10);
+    }
+
+    public void onMultiplicationClick(View v)
+    {
+        Button currentButton = findViewById(v.getId());
+        String buttonText = currentButton.getText().toString();
+        Intent i = new Intent(this, MathTemplateActivity.class);
+        i.putExtra("Type", "Multiplication");
+        i.putExtra("Difficulty", buttonText);
+        startActivityForResult(i, 10);
+    }
+
+    public void onDivisionClick(View v)
+    {
+        Button currentButton = findViewById(v.getId());
+        String buttonText = currentButton.getText().toString();
+        Intent i = new Intent(this, MathTemplateActivity.class);
+        i.putExtra("Type", "Division");
+        i.putExtra("Difficulty", buttonText);
         startActivityForResult(i, 10);
     }
 }
