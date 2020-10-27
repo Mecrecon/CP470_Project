@@ -19,6 +19,8 @@ public class MathTemplateActivity extends AppCompatActivity
     TextView textNum2;
     TextView textUserInput;
     TextView textDisplayResult;
+    int min;
+    int max;
     int num1;
     int num2;
 
@@ -44,8 +46,30 @@ public class MathTemplateActivity extends AppCompatActivity
         textUserInput = findViewById(R.id.textUserInput);
         textDisplayResult = findViewById(R.id.textDisplayResult);
 
-        num1 = _getRandomNumber(1, 49);
-        num2 = _getRandomNumber(1, 49);
+        String currentDifficulty = getIntent().getStringExtra("AdditionDifficulty");
+        if(currentDifficulty.equals("Easy"))
+        {
+            min = 1;
+            max = 49;
+        }
+        else if (currentDifficulty.equals("Medium"))
+        {
+            min = 10;
+            max = 499;
+        }
+        else if (currentDifficulty.equals("Hard"))
+        {
+            min = 100;
+            max = 4999; // Answer will have 4 digits at maximum if unchanged
+        }
+        else
+        {
+            Log.e(ACTIVITY_NAME, "Difficulty was not 'Easy', 'Medium', or 'Hard'.");
+            throw new IllegalStateException();
+        }
+
+        num1 = _getRandomNumber(min, max);
+        num2 = _getRandomNumber(min, max);
         textNum1.setText(String.valueOf(num1));
         textNum2.setText(String.valueOf(num2));
     }
@@ -91,6 +115,7 @@ public class MathTemplateActivity extends AppCompatActivity
     Parameters:   v (View)
     Return:       None
     Description:  -Called when the OK button is clicked
+                  -If user input is blank, does nothing
                   -Determines if the user input was correct, and
                   updates textDisplayResult accordingly
                   -Prepares the next question
@@ -99,6 +124,12 @@ public class MathTemplateActivity extends AppCompatActivity
     public void ButtonOKClick(View v)
     {
         String userInputText = textUserInput.getText().toString();
+
+        if(userInputText.equals(""))
+        {
+            return;
+        }
+
         int userInputNum = Integer.parseInt(userInputText);
 
         if(userInputNum == num1 + num2)
@@ -110,12 +141,11 @@ public class MathTemplateActivity extends AppCompatActivity
             textDisplayResult.setText("No");
         }
 
-        num1 = _getRandomNumber(1, 49);
-        num2 = _getRandomNumber(1, 49);
+        num1 = _getRandomNumber(min, max);
+        num2 = _getRandomNumber(min, max);
         textNum1.setText(String.valueOf(num1));
         textNum2.setText(String.valueOf(num2));
         textUserInput.setText("");
-
     }
 
     /*
