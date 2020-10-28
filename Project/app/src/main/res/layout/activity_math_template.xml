@@ -18,11 +18,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/button1"
+        android:layout_width="136dp"
+        android:layout_height="101dp"
+        android:onClick="NumberedButtonClick"
+        android:text="1"
+        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/buttonBack"
         android:layout_width="136dp"
         android:layout_height="101dp"
         android:onClick="ButtonBackClick"
-        android:text="Back"
+        android:text="@string/btnBack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -72,20 +81,11 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/button1"
-        android:layout_width="136dp"
-        android:layout_height="101dp"
-        android:onClick="NumberedButtonClick"
-        android:text="1"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/buttonOKAddition"
         android:layout_width="136dp"
         android:layout_height="101dp"
         android:onClick="ButtonOKAdditionClick"
-        android:text="OK"
+        android:text="@string/btnOK"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -95,7 +95,7 @@
         android:layout_width="136dp"
         android:layout_height="101dp"
         android:onClick="ButtonOKSubtractionClick"
-        android:text="OK"
+        android:text="@string/btnOK"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/buttonOKAddition"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -105,7 +105,7 @@
         android:layout_width="136dp"
         android:layout_height="101dp"
         android:onClick="ButtonOKMultiplicationClick"
-        android:text="OK"
+        android:text="@string/btnOK"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/buttonOKAddition" />
@@ -115,7 +115,7 @@
         android:layout_width="136dp"
         android:layout_height="101dp"
         android:onClick="ButtonOKDivisionClick"
-        android:text="OK"
+        android:text="@string/btnOK"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -169,11 +169,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textNum1" />
 
     <TextView
-        android:id="@+id/textAnswerDeclaration"
+        android:id="@+id/textAnswerDisplay"
         android:layout_width="162dp"
         android:layout_height="54dp"
         android:layout_marginBottom="4dp"
-        android:text="Answer:"
+        android:text="@string/textAnswerDisplay"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/button1"
         app:layout_constraintStart_toStartOf="parent" />
@@ -195,7 +195,7 @@
         android:layout_height="62dp"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/textAnswerDeclaration" />
+        app:layout_constraintStart_toEndOf="@+id/textAnswerDisplay" />
 
     <TextView
         android:id="@+id/textDisplayResult"
