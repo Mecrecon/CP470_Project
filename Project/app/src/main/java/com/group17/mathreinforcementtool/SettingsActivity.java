@@ -19,13 +19,20 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class SettingsActivity extends AppCompatActivity {
-    Switch DarkSwitch;
-    RadioButton SmallButt;
-    RadioButton MedButt;
-    RadioButton LargeButt;
-    TextView Title;
-    TextView Font;
-    TextView Volume;
+    Switch darkSwitch;
+    RadioButton smallButt;
+    RadioButton medButt;
+    RadioButton largeButt;
+    TextView title;
+    TextView font;
+    TextView volume;
+    Button userAgree;
+    Button privatePolice;
+    Button restart;
+    Button bugReport;
+    int smallSize = 15;
+    int medSize = 20;
+    int largeSize = 25;
 
 
 
@@ -36,15 +43,21 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        final SharedPreferences DarkPreference = getSharedPreferences("DarkStatus", Context.MODE_PRIVATE);
-        final SharedPreferences.Editor editor = DarkPreference.edit();
-        DarkSwitch = findViewById(R.id.DarkSwitch);
-        SmallButt = findViewById(R.id.SmallButton);
-        MedButt = findViewById(R.id.MedButton);
-        LargeButt = findViewById(R.id.LargeButton);
-        Title = findViewById(R.id.Title);
-        Font = findViewById(R.id.FontLabel);
-        Volume = findViewById(R.id.VolumeLabel);
+        final SharedPreferences darkPreference = getSharedPreferences("DarkStatus", Context.MODE_PRIVATE);
+        final SharedPreferences fontPreference = getSharedPreferences("FontSize", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor darkEditor = darkPreference.edit();
+        final SharedPreferences.Editor fontEditor = fontPreference.edit();
+        darkSwitch = findViewById(R.id.DarkSwitch);
+        smallButt = findViewById(R.id.SmallButton);
+        medButt = findViewById(R.id.MedButton);
+        largeButt = findViewById(R.id.LargeButton);
+        title = findViewById(R.id.Title);
+        font = findViewById(R.id.FontLabel);
+        volume = findViewById(R.id.VolumeLabel);
+        userAgree = findViewById(R.id.AgreementButton);
+        privatePolice = findViewById(R.id.PolicyButton);
+        restart = findViewById(R.id.RestartButton);
+        bugReport = findViewById(R.id.BugButton);
         final RelativeLayout layout = (RelativeLayout) findViewById(R.id.Settings);
 
 
@@ -54,54 +67,159 @@ public class SettingsActivity extends AppCompatActivity {
 
 
 
-        if(DarkPreference.getBoolean("DarkStatus", true) == true){
+        if(darkPreference.getBoolean("DarkStatus", true) == true){
             layout.setBackgroundColor(Color.BLACK);
-            DarkSwitch.setChecked(true);
-            DarkSwitch.setTextColor(Color.WHITE);
-            SmallButt.setTextColor(Color.WHITE);
-            MedButt.setTextColor(Color.WHITE);
-            LargeButt.setTextColor(Color.WHITE);
-            Title.setTextColor(Color.WHITE);
-            Font.setTextColor(Color.WHITE);
-            Volume.setTextColor(Color.WHITE);
+            darkSwitch.setChecked(true);
+            darkSwitch.setTextColor(Color.WHITE);
+            smallButt.setTextColor(Color.WHITE);
+            medButt.setTextColor(Color.WHITE);
+            largeButt.setTextColor(Color.WHITE);
+            title.setTextColor(Color.WHITE);
+            font.setTextColor(Color.WHITE);
+            volume.setTextColor(Color.WHITE);
 
 //            MainLayout.setBackgroundColor(Color.BLACK);
         }
 
+        if(fontPreference.getInt("Size", medSize) == smallSize){
+            medButt.setChecked(false);
+            largeButt.setChecked(false);
+            smallButt.setTextSize(smallSize);
+            medButt.setTextSize(smallSize);
+            largeButt.setTextSize(smallSize);
+            font.setTextSize(20);
+            volume.setTextSize(smallSize);
+            title.setTextSize(30);
+            darkSwitch.setTextSize(smallSize);
+            userAgree.setTextSize(smallSize);
+            privatePolice.setTextSize(smallSize);
+            restart.setTextSize(smallSize);
+            bugReport.setTextSize(smallSize);
+        }
+        else if(fontPreference.getInt("Size", medSize) == medSize){
+            smallButt.setChecked(false);
+            largeButt.setChecked(false);
+            smallButt.setTextSize(medSize);
+            medButt.setTextSize(medSize);
+            largeButt.setTextSize(medSize);
+            font.setTextSize(25);
+            volume.setTextSize(medSize);
+            title.setTextSize(45);
+            darkSwitch.setTextSize(medSize);
+            userAgree.setTextSize(medSize);
+            privatePolice.setTextSize(medSize);
+            restart.setTextSize(medSize);
+            bugReport.setTextSize(medSize);
+        }
+        else{
+            smallButt.setChecked(false);
+            medButt.setChecked(false);
+            smallButt.setTextSize(largeSize);
+            medButt.setTextSize(largeSize);
+            largeButt.setTextSize(largeSize);
+            font.setTextSize(30);
+            volume.setTextSize(largeSize);
+            title.setTextSize(60);
+            darkSwitch.setTextSize(largeSize);
+            userAgree.setTextSize(largeSize);
+            privatePolice.setTextSize(largeSize);
+            restart.setTextSize(largeSize);
+            bugReport.setTextSize(largeSize);
+        }
 
-        DarkSwitch = findViewById(R.id.DarkSwitch);
-
-
-        DarkSwitch.setOnClickListener(new View.OnClickListener() {
+        darkSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (DarkSwitch.isChecked()){
-                    editor.putBoolean("DarkStatus", true);
+                if (darkSwitch.isChecked()){
+                    darkEditor.putBoolean("DarkStatus", true);
                     layout.setBackgroundColor(Color.BLACK);
-                    DarkSwitch.setTextColor(Color.WHITE);
-                    SmallButt.setTextColor(Color.WHITE);
-                    MedButt.setTextColor(Color.WHITE);
-                    LargeButt.setTextColor(Color.WHITE);
-                    Title.setTextColor(Color.WHITE);
-                    Font.setTextColor(Color.WHITE);
-                    Volume.setTextColor(Color.WHITE);
+                    darkSwitch.setTextColor(Color.WHITE);
+                    smallButt.setTextColor(Color.WHITE);
+                    medButt.setTextColor(Color.WHITE);
+                    largeButt.setTextColor(Color.WHITE);
+                    title.setTextColor(Color.WHITE);
+                    font.setTextColor(Color.WHITE);
+                    volume.setTextColor(Color.WHITE);
 
 //                    MainLayout.setBackgroundColor(Color.BLACK);
                 }
                 else{
-                    editor.putBoolean("DarkStatus", false);
+                    darkEditor.putBoolean("DarkStatus", false);
                     layout.setBackgroundColor(Color.WHITE);
-                    DarkSwitch.setTextColor(Color.BLACK);
-                    SmallButt.setTextColor(Color.BLACK);
-                    MedButt.setTextColor(Color.BLACK);
-                    LargeButt.setTextColor(Color.BLACK);
-                    Title.setTextColor(Color.BLACK);
-                    Font.setTextColor(Color.BLACK);
-                    Volume.setTextColor(Color.BLACK);
+                    darkSwitch.setTextColor(Color.BLACK);
+                    smallButt.setTextColor(Color.BLACK);
+                    medButt.setTextColor(Color.BLACK);
+                    largeButt.setTextColor(Color.BLACK);
+                    title.setTextColor(Color.BLACK);
+                    font.setTextColor(Color.BLACK);
+                    volume.setTextColor(Color.BLACK);
 
 //                    MainLayout.setBackgroundColor(Color.WHITE);
                 }
-                editor.commit();
+                darkEditor.commit();
+            }
+        });
+
+        smallButt.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                medButt.setChecked(false);
+                largeButt.setChecked(false);
+                smallButt.setTextSize(smallSize);
+                medButt.setTextSize(smallSize);
+                largeButt.setTextSize(smallSize);
+                font.setTextSize(20);
+                volume.setTextSize(smallSize);
+                title.setTextSize(30);
+                darkSwitch.setTextSize(smallSize);
+                userAgree.setTextSize(smallSize);
+                privatePolice.setTextSize(smallSize);
+                restart.setTextSize(smallSize);
+                bugReport.setTextSize(smallSize);
+                fontEditor.putInt("Size", smallSize);
+                fontEditor.commit();
+            }
+        });
+
+        medButt.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                smallButt.setChecked(false);
+                largeButt.setChecked(false);
+                smallButt.setTextSize(medSize);
+                medButt.setTextSize(medSize);
+                largeButt.setTextSize(medSize);
+                font.setTextSize(25);
+                volume.setTextSize(medSize);
+                title.setTextSize(45);
+                darkSwitch.setTextSize(medSize);
+                userAgree.setTextSize(medSize);
+                privatePolice.setTextSize(medSize);
+                restart.setTextSize(medSize);
+                bugReport.setTextSize(medSize);
+                fontEditor.putInt("Size", medSize);
+                fontEditor.commit();
+            }
+        });
+
+        largeButt.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                smallButt.setChecked(false);
+                medButt.setChecked(false);
+                smallButt.setTextSize(largeSize);
+                medButt.setTextSize(largeSize);
+                largeButt.setTextSize(largeSize);
+                font.setTextSize(30);
+                volume.setTextSize(largeSize);
+                title.setTextSize(60);
+                darkSwitch.setTextSize(largeSize);
+                userAgree.setTextSize(largeSize);
+                privatePolice.setTextSize(largeSize);
+                restart.setTextSize(largeSize);
+                bugReport.setTextSize(largeSize);
+                fontEditor.putInt("Size", largeSize);
+                fontEditor.commit();
             }
         });
     }
