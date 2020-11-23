@@ -13,16 +13,27 @@
     <string name="volumelabel">Volume</string>
     <string name="questionText">What is\: </string>
     <string name="levelText">Level</string>
+    <string name="RestartButton">Restart Progress</string>
     <string name="settingsButtonText">Settings</string>
     <string name="multipleChoiceButtonText">Multiple Choice</string>
     <string name="RestartButton">Restart Progress</string>
   
     <!-- Joeys Strings (If you use, put them ^)-->
+
+    <!--activity_main_menu.xml-->
     <string name="textAddition">Addition</string>
     <string name="textSubtraction">Subtraction</string>
     <string name="textMultiplication">Multiplication</string>
     <string name="textDivision">Division</string>
-    <string name="DifficultyEasy">Easy</string>
-    <string name="DifficultyMedium">Medium</string>
-    <string name="DifficultyHard">Hard</string>
+    <string name="btnDifficultyEasy">Easy</string>
+    <string name="btnDifficultyMedium">Medium</string>
+    <string name="btnDifficultyHard">Hard</string>
+
+    <!--activity_math_template.xml-->
+    <string name="btnBack">Back</string>
+    <string name="btnOK">OK</string>
+    <string name="textAnswerDisplay">Answer:</string>
+    <string name="textAnswerCorrect">Yes</string>
+    <string name="textAnswerIncorrect">No</string>
+
 </resources>

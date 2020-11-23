@@ -241,11 +241,11 @@ public class MathTemplateActivity extends AppCompatActivity
         int userInputNum = Integer.parseInt(userInputText);
         if(userInputNum == num1 + num2)
         {
-            textDisplayResult.setText("Yes");
+            textDisplayResult.setText(getString(R.string.textAnswerCorrect));
         }
         else
         {
-            textDisplayResult.setText("No");
+            textDisplayResult.setText(getString(R.string.textAnswerIncorrect));
         }
 
         num1 = _getRandomNumber(min, max);
@@ -266,11 +266,11 @@ public class MathTemplateActivity extends AppCompatActivity
         int userInputNum = Integer.parseInt(userInputText);
         if(userInputNum == num1 - num2)
         {
-            textDisplayResult.setText("Yes");
+            textDisplayResult.setText(getString(R.string.textAnswerCorrect));
         }
         else
         {
-            textDisplayResult.setText("No");
+            textDisplayResult.setText(getString(R.string.textAnswerIncorrect));
         }
 
         num1 = _getRandomNumber(min, max);
@@ -299,11 +299,11 @@ public class MathTemplateActivity extends AppCompatActivity
         int userInputNum = Integer.parseInt(userInputText);
         if(userInputNum == num1 * num2)
         {
-            textDisplayResult.setText("Yes");
+            textDisplayResult.setText(getString(R.string.textAnswerCorrect));
         }
         else
         {
-            textDisplayResult.setText("No");
+            textDisplayResult.setText(getString(R.string.textAnswerIncorrect));
         }
 
         num1 = _getRandomNumber(min, max);
@@ -324,11 +324,11 @@ public class MathTemplateActivity extends AppCompatActivity
         int userInputNum = Integer.parseInt(userInputText);
         if(userInputNum == num1 / num2)
         {
-            textDisplayResult.setText("Yes");
+            textDisplayResult.setText(getString(R.string.textAnswerCorrect));
         }
         else
         {
-            textDisplayResult.setText("No");
+            textDisplayResult.setText(getString(R.string.textAnswerIncorrect));
         }
 
         num1 = _getRandomNumber(min, max);
