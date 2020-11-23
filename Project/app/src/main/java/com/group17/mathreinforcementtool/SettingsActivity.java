@@ -1,5 +1,7 @@
 package com.group17.mathreinforcementtool;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
@@ -18,209 +20,205 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 public class SettingsActivity extends AppCompatActivity {
     Switch darkSwitch;
-    RadioButton smallButt;
-    RadioButton medButt;
-    RadioButton largeButt;
-    TextView title;
-    TextView font;
-    TextView volume;
-    Button userAgree;
-    Button privatePolice;
-    Button restart;
-    Button bugReport;
+
+    List<RadioButton> radioButtonList = new ArrayList<RadioButton>();
+    List<TextView> textViewList = new ArrayList<TextView>();
+    List<Button> buttonList = new ArrayList<Button>();
+
     int smallSize = 15;
     int medSize = 20;
     int largeSize = 25;
 
+    SharedPreferences darkPreference;
+    SharedPreferences fontPreference;
+    SharedPreferences.Editor darkEditor;
+    SharedPreferences.Editor fontEditor;
 
-
-
+    RelativeLayout layout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        final SharedPreferences darkPreference = getSharedPreferences("DarkStatus", Context.MODE_PRIVATE);
-        final SharedPreferences fontPreference = getSharedPreferences("FontSize", Context.MODE_PRIVATE);
-        final SharedPreferences.Editor darkEditor = darkPreference.edit();
-        final SharedPreferences.Editor fontEditor = fontPreference.edit();
+
+        darkPreference = getSharedPreferences("DarkStatus", Context.MODE_PRIVATE);
+        fontPreference = getSharedPreferences("FontSize", Context.MODE_PRIVATE);
+        darkEditor = darkPreference.edit();
+        fontEditor = fontPreference.edit();
+
         darkSwitch = findViewById(R.id.DarkSwitch);
-        smallButt = findViewById(R.id.SmallButton);
-        medButt = findViewById(R.id.MedButton);
-        largeButt = findViewById(R.id.LargeButton);
-        title = findViewById(R.id.Title);
-        font = findViewById(R.id.FontLabel);
-        volume = findViewById(R.id.VolumeLabel);
-        userAgree = findViewById(R.id.AgreementButton);
-        privatePolice = findViewById(R.id.PolicyButton);
-        restart = findViewById(R.id.RestartButton);
-        bugReport = findViewById(R.id.BugButton);
-        final RelativeLayout layout = (RelativeLayout) findViewById(R.id.Settings);
 
+        radioButtonList.addAll((Collection<? extends RadioButton>) Arrays.asList((RadioButton) findViewById(R.id.SmallButton), (RadioButton) findViewById(R.id.MedButton), (RadioButton) findViewById(R.id.LargeButton)));
+        textViewList.addAll((Collection<? extends TextView>) Arrays.asList((TextView) findViewById(R.id.Title), (TextView) findViewById(R.id.FontLabel), (TextView) findViewById(R.id.VolumeLabel)));
+        buttonList.addAll((Collection<? extends Button>) Arrays.asList((Button) findViewById(R.id.AgreementButton), (Button) findViewById(R.id.PolicyButton), (Button) findViewById(R.id.RestartButton),(Button) findViewById(R.id.BugButton)));
 
-//        final ConstraintLayout MainLayout = (ConstraintLayout) findViewById(R.id.MainMenu);
-
-
-
-
+        layout = (RelativeLayout) findViewById(R.id.Settings);
 
         if(darkPreference.getBoolean("DarkStatus", true) == true){
             layout.setBackgroundColor(Color.BLACK);
             darkSwitch.setChecked(true);
             darkSwitch.setTextColor(Color.WHITE);
-            smallButt.setTextColor(Color.WHITE);
-            medButt.setTextColor(Color.WHITE);
-            largeButt.setTextColor(Color.WHITE);
-            title.setTextColor(Color.WHITE);
-            font.setTextColor(Color.WHITE);
-            volume.setTextColor(Color.WHITE);
+            for (RadioButton r: radioButtonList){
+                r.setTextColor(Color.WHITE);
+            }
+            for (TextView t: textViewList){
+                t.setTextColor(Color.WHITE);
+            }
 
-//            MainLayout.setBackgroundColor(Color.BLACK);
         }
-
         if(fontPreference.getInt("Size", medSize) == smallSize){
-            medButt.setChecked(false);
-            largeButt.setChecked(false);
-            smallButt.setTextSize(smallSize);
-            medButt.setTextSize(smallSize);
-            largeButt.setTextSize(smallSize);
-            font.setTextSize(20);
-            volume.setTextSize(smallSize);
-            title.setTextSize(30);
-            darkSwitch.setTextSize(smallSize);
-            userAgree.setTextSize(smallSize);
-            privatePolice.setTextSize(smallSize);
-            restart.setTextSize(smallSize);
-            bugReport.setTextSize(smallSize);
+            for (RadioButton r: radioButtonList){
+                r.setTextSize(smallSize);
+                r.setChecked(false);
+            }
+            radioButtonList.get(0).setChecked(true);
+
+            for (TextView t: textViewList){
+                t.setTextSize(smallSize);
+            }
+            textViewList.get(0).setTextSize(30);
+            textViewList.get(1).setTextSize(20);
+            ;
+            for (Button b: buttonList){
+                b.setTextSize(smallSize);
+            }
         }
         else if(fontPreference.getInt("Size", medSize) == medSize){
-            smallButt.setChecked(false);
-            largeButt.setChecked(false);
-            smallButt.setTextSize(medSize);
-            medButt.setTextSize(medSize);
-            largeButt.setTextSize(medSize);
-            font.setTextSize(25);
-            volume.setTextSize(medSize);
-            title.setTextSize(45);
-            darkSwitch.setTextSize(medSize);
-            userAgree.setTextSize(medSize);
-            privatePolice.setTextSize(medSize);
-            restart.setTextSize(medSize);
-            bugReport.setTextSize(medSize);
+            for (RadioButton r: radioButtonList){
+                r.setTextSize(medSize);
+                r.setChecked(false);
+            }
+            radioButtonList.get(1).setChecked(true);
+
+            for (TextView t: textViewList){
+                t.setTextSize(medSize);
+            }
+            textViewList.get(0).setTextSize(45);
+            textViewList.get(1).setTextSize(25);
+            for (Button b: buttonList){
+                b.setTextSize(medSize);
+            }
         }
         else{
-            smallButt.setChecked(false);
-            medButt.setChecked(false);
-            smallButt.setTextSize(largeSize);
-            medButt.setTextSize(largeSize);
-            largeButt.setTextSize(largeSize);
-            font.setTextSize(30);
-            volume.setTextSize(largeSize);
-            title.setTextSize(60);
-            darkSwitch.setTextSize(largeSize);
-            userAgree.setTextSize(largeSize);
-            privatePolice.setTextSize(largeSize);
-            restart.setTextSize(largeSize);
-            bugReport.setTextSize(largeSize);
+            for (RadioButton r: radioButtonList){
+                r.setTextSize(largeSize);
+                r.setChecked(false);
+            }
+            radioButtonList.get(2).setChecked(true);
+
+            for (TextView t: textViewList){
+                t.setTextSize(largeSize);
+            }
+            textViewList.get(0).setTextSize(60);
+            textViewList.get(1).setTextSize(30);
+
+            for (Button b: buttonList){
+                b.setTextSize(largeSize);
+            }
         }
-
-        darkSwitch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (darkSwitch.isChecked()){
-                    darkEditor.putBoolean("DarkStatus", true);
-                    layout.setBackgroundColor(Color.BLACK);
-                    darkSwitch.setTextColor(Color.WHITE);
-                    smallButt.setTextColor(Color.WHITE);
-                    medButt.setTextColor(Color.WHITE);
-                    largeButt.setTextColor(Color.WHITE);
-                    title.setTextColor(Color.WHITE);
-                    font.setTextColor(Color.WHITE);
-                    volume.setTextColor(Color.WHITE);
-
-//                    MainLayout.setBackgroundColor(Color.BLACK);
-                }
-                else{
-                    darkEditor.putBoolean("DarkStatus", false);
-                    layout.setBackgroundColor(Color.WHITE);
-                    darkSwitch.setTextColor(Color.BLACK);
-                    smallButt.setTextColor(Color.BLACK);
-                    medButt.setTextColor(Color.BLACK);
-                    largeButt.setTextColor(Color.BLACK);
-                    title.setTextColor(Color.BLACK);
-                    font.setTextColor(Color.BLACK);
-                    volume.setTextColor(Color.BLACK);
-
-//                    MainLayout.setBackgroundColor(Color.WHITE);
-                }
-                darkEditor.commit();
+    }
+    public void onDarkClick(View v){
+        if (darkSwitch.isChecked()){
+            darkEditor.putBoolean("DarkStatus", true);
+            layout.setBackgroundColor(Color.BLACK);
+            darkSwitch.setTextColor(Color.WHITE);
+            for (RadioButton r: radioButtonList){
+                r.setTextColor(Color.WHITE);
             }
-        });
-
-        smallButt.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                medButt.setChecked(false);
-                largeButt.setChecked(false);
-                smallButt.setTextSize(smallSize);
-                medButt.setTextSize(smallSize);
-                largeButt.setTextSize(smallSize);
-                font.setTextSize(20);
-                volume.setTextSize(smallSize);
-                title.setTextSize(30);
-                darkSwitch.setTextSize(smallSize);
-                userAgree.setTextSize(smallSize);
-                privatePolice.setTextSize(smallSize);
-                restart.setTextSize(smallSize);
-                bugReport.setTextSize(smallSize);
-                fontEditor.putInt("Size", smallSize);
-                fontEditor.commit();
+            for (TextView t: textViewList){
+                t.setTextColor(Color.WHITE);
             }
-        });
 
-        medButt.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                smallButt.setChecked(false);
-                largeButt.setChecked(false);
-                smallButt.setTextSize(medSize);
-                medButt.setTextSize(medSize);
-                largeButt.setTextSize(medSize);
-                font.setTextSize(25);
-                volume.setTextSize(medSize);
-                title.setTextSize(45);
-                darkSwitch.setTextSize(medSize);
-                userAgree.setTextSize(medSize);
-                privatePolice.setTextSize(medSize);
-                restart.setTextSize(medSize);
-                bugReport.setTextSize(medSize);
-                fontEditor.putInt("Size", medSize);
-                fontEditor.commit();
+        }
+        else{
+            darkEditor.putBoolean("DarkStatus", false);
+            layout.setBackgroundColor(Color.WHITE);
+            darkSwitch.setTextColor(Color.BLACK);
+            for (RadioButton r: radioButtonList){
+                r.setTextColor(Color.BLACK);
             }
-        });
 
-        largeButt.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                smallButt.setChecked(false);
-                medButt.setChecked(false);
-                smallButt.setTextSize(largeSize);
-                medButt.setTextSize(largeSize);
-                largeButt.setTextSize(largeSize);
-                font.setTextSize(30);
-                volume.setTextSize(largeSize);
-                title.setTextSize(60);
-                darkSwitch.setTextSize(largeSize);
-                userAgree.setTextSize(largeSize);
-                privatePolice.setTextSize(largeSize);
-                restart.setTextSize(largeSize);
-                bugReport.setTextSize(largeSize);
-                fontEditor.putInt("Size", largeSize);
-                fontEditor.commit();
+            for (TextView t: textViewList){
+                t.setTextColor(Color.BLACK);
             }
-        });
+        }
+        darkEditor.commit();
+    }
+    public void onSmallClick(View v){
+        for (RadioButton r: radioButtonList){
+            r.setTextSize(smallSize);
+            r.setChecked(false);
+        }
+        radioButtonList.get(0).setChecked(true);
+
+        for (TextView t: textViewList){
+            t.setTextSize(smallSize);
+        }
+        textViewList.get(0).setTextSize(30);
+        textViewList.get(1).setTextSize(20);
+        for (Button b: buttonList){
+            b.setTextSize(smallSize);
+        }
+        fontEditor.putInt("Size", smallSize);
+        fontEditor.commit();
+    }
+    public void onMedClick(View v){
+        for (RadioButton r: radioButtonList){
+            r.setTextSize(medSize);
+            r.setChecked(false);
+        }
+        radioButtonList.get(1).setChecked(true);
+
+        for (TextView t: textViewList){
+            t.setTextSize(medSize);
+        }
+        textViewList.get(0).setTextSize(45);
+        textViewList.get(1).setTextSize(25);
+
+        for (Button b: buttonList){
+            b.setTextSize(medSize);
+        }
+        fontEditor.putInt("Size", medSize);
+        fontEditor.commit();
+    }
+    public void onLargeClick(View v){
+        for (RadioButton r: radioButtonList){
+            r.setTextSize(largeSize);
+            r.setChecked(false);
+        }
+        radioButtonList.get(2).setChecked(true);
+
+        for (TextView t: textViewList){
+            t.setTextSize(largeSize);
+        }
+        textViewList.get(0).setTextSize(60);
+        textViewList.get(1).setTextSize(30);
+        for (Button b: buttonList){
+            b.setTextSize(largeSize);
+        }
+        fontEditor.putInt("Size", largeSize);
+        fontEditor.commit();
+    }
+    public void onRestartClick(View v){
+
+    }
+    public void onBugClick(View v){
+
+    }
+    public void onAgreeClick(View v){
+
+    }
+    public void onPolicyClick(View v){
+
     }
 }

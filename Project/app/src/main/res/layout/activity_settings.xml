@@ -23,6 +23,7 @@
         android:id="@+id/DarkSwitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onDarkClick"
         android:layout_below="@id/Title"
         android:text="@string/darkSwitch"
         android:textSize="25sp"
@@ -42,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/DarkSwitch"
-
+        android:onClick="onSmallClick"
         android:layout_toEndOf="@id/FontLabel"
         android:gravity="center"
         android:text="@string/smallButton"
@@ -54,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/DarkSwitch"
-
+        android:onClick="onMedClick"
         android:layout_toEndOf="@id/SmallButton"
         android:gravity="center"
         android:text="@string/medButton"
@@ -66,6 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/DarkSwitch"
+        android:onClick="onLargeClick"
         android:layout_toEndOf="@id/MedButton"
         android:gravity="center"
         android:text="@string/largeButton"
@@ -78,7 +80,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/BugButton"
         android:text="@string/RestartButton"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:onClick="onRestartClick"/>
 
     <Button
         android:id="@+id/BugButton"
@@ -86,7 +89,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/AgreementButton"
         android:text="@string/bugButton"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:onClick="onBugClick"/>
 
     <Button
         android:id="@+id/AgreementButton"
@@ -94,7 +98,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/PolicyButton"
         android:text="@string/agreementButton"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:onClick="onAgreeClick"/>
 
     <Button
         android:id="@+id/PolicyButton"
@@ -102,7 +107,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="@string/privacyPolicyButton"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:onClick="onPolicyClick"/>
 
 
 
