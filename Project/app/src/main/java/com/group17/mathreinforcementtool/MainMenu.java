@@ -25,38 +25,9 @@ import java.util.List;
 
 public class MainMenu extends AppCompatActivity {
 
-    TextView multiChoiceText;
-    TextView addText;
-    TextView subText;
-    TextView multText;
-    TextView divText;
-
     List<Button> buttonList = new ArrayList<Button>();
     List<Button> littleButtonList = new ArrayList<Button>();
     List<TextView> textViewList = new ArrayList<TextView>();
-
-//    Buttons for the font size haha
-    Button easyButt;
-    Button medButt;
-    Button hardButt;
-
-    Button easyAddButt;
-    Button medAddButt;
-    Button hardAddButt;
-
-    Button easyMultButt;
-    Button medMultButt;
-    Button hardMultButt;
-
-    Button easySubButt;
-    Button medSubButt;
-    Button hardSubButt;
-
-    Button easyDivButt;
-    Button medDivButt;
-    Button hardDivButt;
-
-    Button settingsButt;
 
     int smallSize = 15;
     int medSize = 20;
